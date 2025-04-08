@@ -1,45 +1,37 @@
-NAME = libft.a
-CC = cc
-CFLAGS = -Wall -Wextra -Werror
-AR = ar rcs
-RM = rm -f
+NAME		= push_swap
 
-SRCS = ft_isdigit.c ft_isalnum.c ft_isascii.c ft_isprint.c \
-       ft_strlen.c ft_memset.c ft_bzero.c ft_memcpy.c ft_memmove.c \
-       ft_strlcpy.c ft_strlcat.c ft_toupper.c ft_tolower.c ft_strchr.c \
-       ft_strrchr.c ft_strncmp.c ft_memcmp.c ft_strnstr.c \
-       ft_atoi.c ft_calloc.c ft_strdup.c ft_substr.c ft_strjoin.c \
-       ft_strtrim.c ft_split.c ft_itoa.c ft_strmapi.c ft_striteri.c \
-       ft_putchar_fd.c ft_putstr_fd.c ft_putendl_fd.c ft_putnbr_fd.c
+CC			= cc
+CFLAGS		= -Wall -Wextra -Werror
 
-GNL_SRCS = get_next_line.c get_next_line_utils.c
+RM			= rm -f
 
-ALL_SRCS = $(SRCS) $(GNL_SRCS)
+LIBFT_PATH	= libft
+LIBFT		= $(LIBFT_PATH)/libft.a
 
-OBJS = $(ALL_SRCS:.c=.o)
+SRCS		= main.c stack.c \
+             check_input.c check_input_utils.c \
+             stack_utils.c \
+             push_action.c rotate_action.c retate_reverse_action.c \
+             small_sort.c radix_sort.c \
+             error.c
 
-FT_PRINTF_DIR = ft_printf
-FT_PRINTF_LIB = $(FT_PRINTF_DIR)/libftprintf.a
+OBJS		= $(SRCS:.c=.o)
 
 all: $(NAME)
 
-$(FT_PRINTF_LIB):
-	make -C $(FT_PRINTF_DIR)
+$(NAME): $(OBJS) $(LIBFT)
+	$(CC) $(CFLAGS) $(OBJS) $(LIBFT) -o $(NAME)
 
-$(NAME): $(OBJS) $(FT_PRINTF_LIB)
-	cp $(FT_PRINTF_LIB) $(NAME)
-	$(AR) $(NAME) $(OBJS)
-
-%.o: %.c
-	$(CC) $(CFLAGS) -c $< -o $@
+$(LIBFT):
+	make -C $(LIBFT_PATH)
 
 clean:
 	$(RM) $(OBJS)
-	make -C $(FT_PRINTF_DIR) clean
+	make -C $(LIBFT_PATH) clean
 
 fclean: clean
 	$(RM) $(NAME)
-	make -C $(FT_PRINTF_DIR) fclean
+	make -C $(LIBFT_PATH) fclean
 
 re: fclean all
 

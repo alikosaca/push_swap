@@ -6,7 +6,7 @@
 /*   By: akosaca <akosaca@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/06 18:09:33 by akosaca           #+#    #+#             */
-/*   Updated: 2025/04/08 15:45:52 by akosaca          ###   ########.fr       */
+/*   Updated: 2025/04/08 19:09:42 by akosaca          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,16 +25,15 @@ typedef struct s_stack
 {
 	int				value;
 	struct s_stack	*next;
-}	t_stack;
+}				t_stack;
 
 //main
-static void	stack_init(t_stack **a, t_stack **b, int ac, char **av, int *size);
-
 
 //check_input
-int		get_arr(int ac, char **av, int *size, int is_free);
+int		*get_arr(int ac, char **av, int *size, int is_free);
 int		count_arr(char **args, int is_free);
-void	get_arr_utils(char **arr, int *number_arr, int *size, int is_free);
+// int		*get_arr_utils(char **arr, int *number_arr, int *size, int is_free);
+
 
 
 //check_input_utils
@@ -42,6 +41,7 @@ int	is_number(char *str);
 int	is_valid_int(char *str);
 int	check_duplicates(int *number_arr, int size);
 
+int	is_sorted(t_stack *stack);
 
 
 //error
@@ -50,6 +50,7 @@ void	error_exit(void);
 
 //stack
 void	push(t_stack **stack, int value);
+int		pop(t_stack **stack);
 
 //stack_utils
 void	free_stack(t_stack **stack);
@@ -78,5 +79,8 @@ void	rra(t_stack **a, int print);
 void	rrb(t_stack **b, int print);
 void	rr(t_stack **a, t_stack **b, int print);
 
+
+//radix_sort
+void	radix_sort(t_stack **stack_a, t_stack **stack_b);
 
 #endif

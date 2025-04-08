@@ -6,7 +6,7 @@
 /*   By: akosaca <akosaca@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/03 12:19:30 by akosaca           #+#    #+#             */
-/*   Updated: 2025/04/08 15:28:51 by akosaca          ###   ########.fr       */
+/*   Updated: 2025/04/08 19:09:01 by akosaca          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,10 +19,10 @@ static void	stack_init(t_stack **a, t_stack **b, int ac, char **av, int *size)
 	int		*numbers;
 	int		i;
 
-	numbers = get_arr(ac, av, &size, 0);
+	numbers = get_arr(ac, av, size, 0);
 	if (!numbers)
 		error_exit();
-	i = size - 1;
+	i = *size - 1;
 	*a = NULL;
 	*b = NULL;
 	while (i >= 0)
@@ -57,14 +57,14 @@ static void	sort_algorithms(t_stack **a, t_stack **b, int size)
 	else if (size == 5)
 		sort_five(a, b);
 	else
-		radix_sort(a, b, size);
+		radix_sort(a, b);
 }
 
 int main(int ac, char *av[])
 {
 	t_stack *a;
 	t_stack *b;
-	int		*size;
+	int		size;
 
 	stack_init(&a, &b, ac, av, &size);
 	
@@ -74,6 +74,12 @@ int main(int ac, char *av[])
 		return (1);
 	}
 	sort_algorithms(&a, &b, size);
+	t_stack *temp = a;
+	while (temp)
+	{
+		ft_printf("%d ", temp->value);
+		temp = temp->next;
+	}
 	free_stack(&a);
 	free_stack(&b);
 	return (0);

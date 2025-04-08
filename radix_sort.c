@@ -6,37 +6,57 @@
 /*   By: akosaca <akosaca@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/08 15:46:17 by akosaca           #+#    #+#             */
-/*   Updated: 2025/04/08 15:47:15 by akosaca          ###   ########.fr       */
+/*   Updated: 2025/04/08 19:06:29 by akosaca          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	radix_sort(t_stack **a, t_stack **b, int size)
+static int	get_max_bits(t_list **stack)
 {
-    int		i;
-    int		j;
-    int		max_bits;
-    int		max_num;
+	t_stack	*head;
+	int		max;
+	int		max_bits;
 
-    max_num = find_max(*a);
-    max_bits = 0;
-    while ((max_num >> max_bits) != 0)
-        max_bits++;
-    i = 0;
-    while (i < max_bits)
-    {
-        j = 0;
-        while (j < size)
-        {
-            if (((*a)->value >> i) & 1)
-                push(b, pop(a));
-            else
-                ra(a, 1);
-            j++;
-        }
-        while (*b)
-            push(a, pop(b));
-        i++;
-    }
+	head = *stack;
+	max = head->value;
+	max_bits = 0;
+	while (head)
+	{
+		if (head->value > max)
+			max = head->value;
+		head = head->next;
+	}
+	while ((max >> max_bits) != 0)
+		max_bits++;
+	return (max_bits);
+}
+
+void	radix_sort(t_stack **stack_a, t_stack **stack_b)
+{
+	t_stack *head_a;
+	int		i;
+	int		j;
+	int		size;
+	int		max_bits;
+
+	i = 0;
+	head_a = *stack_a;
+	size = ft_lstsize(head_a);
+	max_bits = get_max_bits(stack_a);
+	while (i < max_bits)
+	{
+		j = 0;
+		while (j++ < size)
+		{
+			head_a = *stack_a;
+			if (((head_a->value >> i) & 1) == 1)
+				ra(stack_a, 1);
+			else
+				pb(stack_a, stack_b, 1);
+		}
+		while (ft_lstsize(*stack_b) != 0)
+			pa(stack_a, stack_b, 1);
+		i++;
+	}
 }

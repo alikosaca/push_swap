@@ -6,7 +6,7 @@
 /*   By: akosaca <akosaca@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/08 15:36:33 by akosaca           #+#    #+#             */
-/*   Updated: 2025/04/08 15:36:46 by akosaca          ###   ########.fr       */
+/*   Updated: 2025/04/08 17:41:30 by akosaca          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	pa(t_stack **a, t_stack **b, int print)
 {
-	if (!is_empty(*b))
+	if (*b != NULL)
 	{
 		push(a, pop(b));
 		if (print)
@@ -24,7 +24,7 @@ void	pa(t_stack **a, t_stack **b, int print)
 
 void	pb(t_stack **a, t_stack **b, int print)
 {
-	if (!is_empty(*a))
+	if (*a != NULL)
 	{
 		push(b, pop(a));
 		if (print)
