@@ -6,7 +6,7 @@
 /*   By: akosaca <akosaca@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/06 18:09:33 by akosaca           #+#    #+#             */
-/*   Updated: 2025/04/06 18:09:33 by akosaca          ###   ########.fr       */
+/*   Updated: 2025/04/08 15:45:52 by akosaca          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,5 +53,30 @@ void	push(t_stack **stack, int value);
 
 //stack_utils
 void	free_stack(t_stack **stack);
+
+//small_sort
+void	sort_two(t_stack **a);
+void	sort_three(t_stack **a);
+void	sort_four(t_stack **a, t_stack **b);
+void	sort_five(t_stack **a, t_stack **b);
+
+//swap_action
+void	sa(t_stack **a, int print);
+void	sb(t_stack **b, int print);
+void	ss(t_stack **a, t_stack **b, int print);
+
+//push_action
+void	pa(t_stack **a, t_stack **b, int print);
+void	pb(t_stack **a, t_stack **b, int print);
+
+//rotate_action
+void	ra(t_stack **a, int print);
+void	rb(t_stack **b, int print);
+
+//rotate_reverse_action
+void	rra(t_stack **a, int print);
+void	rrb(t_stack **b, int print);
+void	rr(t_stack **a, t_stack **b, int print);
+
 
 #endif

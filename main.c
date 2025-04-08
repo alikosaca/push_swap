@@ -6,7 +6,7 @@
 /*   By: akosaca <akosaca@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/03 12:19:30 by akosaca           #+#    #+#             */
-/*   Updated: 2025/04/06 21:18:31 by akosaca          ###   ########.fr       */
+/*   Updated: 2025/04/08 15:28:51 by akosaca          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,23 @@ static void	stack_init(t_stack **a, t_stack **b, int ac, char **av, int *size)
 	free(numbers);
 }
 
-static void	choose_algorithm(t_stack **a, t_stack **b, int size)
+int	is_sorted(t_stack *stack)
+{
+	t_stack	*temp;
+
+	if (!stack || !stack->next)
+		return (1);
+	temp = stack;
+	while (temp && temp->next)
+	{
+		if (temp->value > temp->next->value)
+			return (0);
+		temp = temp->next;
+	}
+	return (1);
+}
+
+static void	sort_algorithms(t_stack **a, t_stack **b, int size)
 {
 	if (size == 2)
 		sort_two(a);
@@ -43,7 +59,6 @@ static void	choose_algorithm(t_stack **a, t_stack **b, int size)
 	else
 		radix_sort(a, b, size);
 }
-
 
 int main(int ac, char *av[])
 {

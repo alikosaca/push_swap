@@ -36,6 +36,32 @@ int	arr_atoi(char **arr, int size)
 	return (number_arr);
 }
 
+int	count_arr(char **arr, int is_free)
+{
+	int	i;
+
+	i = 0;
+	while (arr[i])
+		i++;
+	if (i == 0)
+	{
+		if (is_free)
+			free_arr(arr);
+		return (0);
+	}
+	return (i);
+}
+
+void	get_arr_utils(char **arr, int *number_arr, int *size, int is_free)
+{
+	if (arr)
+		*size = count_arr(arr, is_free);
+	if (arr)
+		number_arr = arr_atoi(arr, size);
+	if (is_free)
+		free_arr(arr);
+}
+
 int	get_arr(int ac, char **av, int *size, int is_free)
 {
 	char	**arr;
@@ -59,29 +85,4 @@ int	get_arr(int ac, char **av, int *size, int is_free)
 		arr = av + 1;
 	get_arr_utils(arr, number_arr, size, is_free);
 	return (number_arr);
-}
-
-void	get_arr_utils(char **arr, int *number_arr, int *size, int is_free)
-{
-	if (arr)
-		*size = count_arr(arr, is_free);
-	if (arr)
-		number_arr = arr_atoi(arr, size);
-	if (is_free)
-		free_arr(arr);
-}
-int	count_arr(char **arr, int is_free)
-{
-	int	i;
-
-	i = 0;
-	while (arr[i])
-		i++;
-	if (i == 0)
-	{
-		if (is_free)
-			free_arr(arr);
-		return (0);
-	}
-	return (i);
 }
