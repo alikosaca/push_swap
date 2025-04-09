@@ -34,7 +34,12 @@ int		*get_arr(int ac, char **av, int *size, int is_free);
 int		count_arr(char **args, int is_free);
 // int		*get_arr_utils(char **arr, int *number_arr, int *size, int is_free);
 
+int	find_min_pos(t_stack *stack);
+int	find_max_pos(t_stack *stack);
 
+int ft_stacksize(t_stack *stack);
+
+void	index_stack(t_stack **a, int size);
 
 //check_input_utils
 int	is_number(char *str);
@@ -42,6 +47,8 @@ int	is_valid_int(char *str);
 int	check_duplicates(int *number_arr, int size);
 
 int	is_sorted(t_stack *stack);
+void	sort_array(int *arr, int size);
+void	index_stack_apply(t_stack **a, int *sorted, int size);
 
 
 //error
@@ -82,5 +89,7 @@ void	rr(t_stack **a, t_stack **b, int print);
 
 //radix_sort
 void	radix_sort(t_stack **stack_a, t_stack **stack_b);
+
+int *arr_atoi(char **arr, int size);
 
 #endif

@@ -10,8 +10,8 @@ LIBFT		= $(LIBFT_PATH)/libft.a
 
 SRCS		= main.c stack.c \
              check_input.c check_input_utils.c \
-             stack_utils.c \
-             push_action.c rotate_action.c retate_reverse_action.c \
+             stack_utils.c algorithm_utils.c \
+             swap_action.c push_action.c rotate_action.c rotate_reverse_action.c \
              small_sort.c radix_sort.c \
              error.c
 

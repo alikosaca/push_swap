@@ -56,7 +56,7 @@ int	is_valid_int(char *str)
 	return (1);
 }
 
-int	check_duplicates(int *number_arr, int size)
+int	check_duplicates(int *numbers, int size)
 {
 	int	i;
 	int	j;
@@ -67,11 +67,8 @@ int	check_duplicates(int *number_arr, int size)
 		j = i + 1;
 		while (j < size)
 		{
-			if (number_arr[i] == number_arr[j])
-			{
-				free(number_arr);
+			if (numbers[i] == numbers[j])
 				return (1);
-			}
 			j++;
 		}
 		i++;
