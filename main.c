@@ -10,8 +10,6 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-
-
 #include "push_swap.h"
 
 static void	stack_init(t_stack **a, t_stack **b, int ac, char **av, int *size)
@@ -28,7 +26,6 @@ static void	stack_init(t_stack **a, t_stack **b, int ac, char **av, int *size)
 	while (i >= 0)
 		push(a, numbers[i--]);
 	free(numbers);
-
 }
 
 static void	sort_algorithms(t_stack **a, t_stack **b, int size)
@@ -44,64 +41,6 @@ static void	sort_algorithms(t_stack **a, t_stack **b, int size)
 	else
 		radix_sort(a, b);
 }
-void	index_stack_apply(t_stack **a, int *sorted, int size)
-{
-	t_stack	*temp;
-	int		i;
-
-	temp = *a;
-	while (temp)
-	{
-		i = 0;
-		while (i < size && sorted[i] != temp->value)
-			i++;
-		if (i < size)
-			temp->value = i;
-		temp = temp->next;
-	}
-}
-void	sort_array(int *arr, int size)
-{
-	int	i;
-	int	j;
-	int	temp;
-
-	i = -1;
-	while (++i < size - 1)
-	{
-		j = -1;
-		while (++j < size - i - 1)
-		{
-			if (arr[j] > arr[j + 1])
-			{
-				temp = arr[j];
-				arr[j] = arr[j + 1];
-				arr[j + 1] = temp;
-			}
-		}
-	}
-}
-
-void	index_stack(t_stack **a, int size)
-{
-	t_stack	*temp;
-	int		*sorted;
-	int		i;
-
-	sorted = (int *)malloc(sizeof(int) * size);
-	if (!sorted)
-		return ;
-	temp = *a;
-	i = 0;
-	while (temp && i < size)
-	{
-		sorted[i++] = temp->value;
-		temp = temp->next;
-	}
-	sort_array(sorted, size);
-	index_stack_apply(a, sorted, size);
-	free(sorted);
-}
 
 int main(int ac, char *av[])
 {
@@ -116,16 +55,8 @@ int main(int ac, char *av[])
 		free_stack(&a);
 		return (1);
 	}
-
 	index_stack(&a, size);
-
 	sort_algorithms(&a, &b, size);
-	t_stack *temp = a;
-	while (temp)
-	{
-		ft_printf("%d ", temp->value);
-		temp = temp->next;
-	}
 	free_stack(&a);
 	free_stack(&b);
 	return (0);

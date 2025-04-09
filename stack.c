@@ -24,21 +24,6 @@ void	push(t_stack **stack, int value)
 	*stack = new_stack;
 }
 
-int	pop(t_stack **stack)
-{
-	t_stack	*temp;
-	int		value;
-
-	if (*stack == NULL)
-		return (0);
-	temp = *stack;
-	value = temp->value;
-	*stack = temp->next;
-	free(temp);
-	return (value);
-}
-
-
 int	is_sorted(t_stack *stack)
 {
 	t_stack	*temp;
@@ -53,4 +38,66 @@ int	is_sorted(t_stack *stack)
 		temp = temp->next;
 	}
 	return (1);
+}
+
+void	sort_array(int *arr, int size)
+{
+	int	i;
+	int	j;
+	int	temp;
+
+	i = 0;
+	while (i < size - 1)
+	{
+		j = 0;
+		while (j < size - i - 1)
+		{
+			if (arr[j] > arr[j + 1])
+			{
+				temp = arr[j];
+				arr[j] = arr[j + 1];
+				arr[j + 1] = temp;
+			}
+			j++;
+		}
+		i++;
+	}
+}
+
+void	index_stack_apply(t_stack **a, int *sorted, int size)
+{
+	t_stack	*temp;
+	int		i;
+
+	temp = *a;
+	while (temp)
+	{
+		i = 0;
+		while (i < size && sorted[i] != temp->value)
+			i++;
+		if (i < size)
+			temp->value = i;
+		temp = temp->next;
+	}
+}
+
+void	index_stack(t_stack **a, int size)
+{
+	t_stack	*temp;
+	int		*sorted;
+	int		i;
+
+	sorted = (int *)malloc(sizeof(int) * size);
+	if (!sorted)
+		return ;
+	temp = *a;
+	i = 0;
+	while (temp && i < size)
+	{
+		sorted[i++] = temp->value;
+		temp = temp->next;
+	}
+	sort_array(sorted, size);
+	index_stack_apply(a, sorted, size);
+	free(sorted);
 }

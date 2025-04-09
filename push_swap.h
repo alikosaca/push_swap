@@ -27,7 +27,6 @@ typedef struct s_stack
 	struct s_stack	*next;
 }				t_stack;
 
-//main
 
 //check_input
 int		*get_arr(int ac, char **av, int *size, int is_free);
@@ -35,6 +34,7 @@ int		count_arr(char **args, int is_free);
 // int		*get_arr_utils(char **arr, int *number_arr, int *size, int is_free);
 
 int	find_min_pos(t_stack *stack);
+
 int	find_max_pos(t_stack *stack);
 
 int ft_stacksize(t_stack *stack);

@@ -12,6 +12,45 @@
 
 #include "push_swap.h"
 
+int find_min_pos(t_stack *stack)
+{
+	t_stack *temp;
+	int     min;
+	int     pos;
+	int     min_pos;
+
+	if (!stack)
+		return (-1);
+	temp = stack;
+	min = temp->value;
+	pos = 0;
+	min_pos = 0;
+	while (temp)
+	{
+		if (temp->value < min)
+		{
+			min = temp->value;
+			min_pos = pos;
+		}
+		pos++;
+		temp = temp->next;
+	}
+	return (min_pos);
+}
+
+int	pop(t_stack **stack)
+{
+	t_stack	*temp;
+	int		value;
+
+	if (*stack == NULL)
+		return (0);
+	temp = *stack;
+	value = temp->value;
+	*stack = temp->next;
+	free(temp);
+	return (value);
+}
 void	free_stack(t_stack **stack)
 {
 	t_stack	*temp;
@@ -25,45 +64,4 @@ void	free_stack(t_stack **stack)
 		temp = next;
 	}
 	*stack = NULL;
-}
-int find_min_pos(t_stack *stack)
-{
-    t_stack *temp;
-    int     min;
-    int     pos;
-    int     min_pos;
-
-    if (!stack)
-        return (-1);
-    temp = stack;
-    min = temp->value;
-    pos = 0;
-    min_pos = 0;
-    while (temp)
-    {
-        if (temp->value < min)
-        {
-            min = temp->value;
-            min_pos = pos;
-        }
-        pos++;
-        temp = temp->next;
-    }
-    return (min_pos);
-}
-
-int ft_stacksize(t_stack *stack)
-{
-    int size;
-    t_stack *current;
-
-    size = 0;
-    current = stack;
-    while (current)
-    {
-        size++;
-        current = current->next;
-    }
-    
-    return (size);
 }

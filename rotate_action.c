@@ -57,24 +57,3 @@ void	rr(t_stack **a, t_stack **b, int print)
 	if (print)
 		ft_putstr_fd("rr\n", 1);
 }
-
-
-// void	ra(t_stack **a, int print)
-// {
-//     if (!is_empty(*a))
-//     {
-//         rotate(a);
-//         if (print)
-//             ft_putstr_fd("ra\n", 1);
-//     }
-// }
-
-// void	rb(t_stack **b, int print)
-// {
-//     if (!is_empty(*b))
-//     {
-//         rotate(b);
-//         if (print)
-//             ft_putstr_fd("rb\n", 1);
-//     }
-// }

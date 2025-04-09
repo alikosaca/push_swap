@@ -58,68 +58,31 @@ int	count_arr(char **arr, int is_free)
 	return (i);
 }
 
-// int	*get_arr_utils(char **arr, int *number_arr, int *size, int is_free)
-// {
-// 	if (arr)
-// 		*size = count_arr(arr, is_free);
-// 	if (*size)
-// 		*number_arr = arr_atoi(arr, *size);
-// 	if (is_free)
-// 		free_arr(arr);
-// 	return (number_arr);
-// }
-
 int *get_arr(int ac, char **av, int *size, int is_free)
 {
-    char **arr;
-    int *number_arr;
+	char **arr;
+	int *number_arr;
 
-    if (ac == 2 && av[1])
-    {
-        if (av[1][0] == '\0')
-            return (NULL);
-        arr = ft_split(av[1], ' ');
-        if (!arr)
-            return (NULL);
-        is_free = 1;
-        if (!arr[0])
-        {
-            free(arr);
-            return (NULL);
-        }
-    }
-    else
-        arr = av + 1;
-    if (arr)
-        *size = count_arr(arr, is_free);
-    number_arr = arr_atoi(arr, *size);
-    if (is_free)
-        free_arr(arr);
-    return (number_arr);
+	if (ac == 2 && av[1])
+	{
+		if (av[1][0] == '\0')
+			return (NULL);
+		arr = ft_split(av[1], ' ');
+		if (!arr)
+			return (NULL);
+		is_free = 1;
+		if (!arr[0])
+		{
+			free(arr);
+			return (NULL);
+		}
+	}
+	else
+		arr = av + 1;
+	if (arr)
+		*size = count_arr(arr, is_free);
+	number_arr = arr_atoi(arr, *size);
+	if (is_free)
+		free_arr(arr);
+	return (number_arr);
 }
-
-
-// int	*get_arr(int ac, char **av, int *size, int is_free)
-// {
-// 	char	**arr;
-// 	int		*number_arr;
-
-// 	if (ac == 2 && av[1])
-// 	{
-// 		if (av[1][0] == '\0')
-// 			return (NULL);
-// 		arr = ft_split(av[1], ' ');
-// 		if (!arr)
-// 			return (NULL);
-// 		is_free = 1;
-// 		if (!arr[0])
-// 		{
-// 			free(arr);
-// 			return (NULL);
-// 		}
-// 	}
-// 	else
-// 		arr = av + 1;
-// 	number_arr = get_arr_utils(arr, number_arr, size, is_free);
-// 	return (number_arr);
-// }
