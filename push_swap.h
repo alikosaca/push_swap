@@ -28,6 +28,7 @@ typedef struct s_stack
 
 int		*get_arr(int ac, char **av, int *size, int is_free);
 int		count_arr(char **args, int is_free);
+void	sort_four_and_five(t_stack **a, t_stack **b, int size);
 
 int		find_min_pos(t_stack *stack);
 int		find_max_pos(t_stack *stack);
@@ -58,8 +59,10 @@ void	free_stack(t_stack **stack);
 //small_sort
 void	sort_two(t_stack **a);
 void	sort_three(t_stack **a);
-void	sort_four(t_stack **a, t_stack **b);
-void	sort_five(t_stack **a, t_stack **b);
+void	sort_four_and_five(t_stack **a, t_stack **b, int size);
+//void	sort_five(t_stack **a, t_stack **b);
+
+//void	sort_four(t_stack **a, t_stack **b);
 
 //swap_action
 void	sa(t_stack **a, int print);

@@ -32,10 +32,8 @@ static void	sort_algorithms(t_stack **a, t_stack **b, int size)
 		sort_two(a);
 	else if (size == 3)
 		sort_three(a);
-	else if (size == 4)
-		sort_four(a, b);
-	else if (size == 5)
-		sort_five(a, b);
+	else if (size == 4 || size == 5)
+		sort_four_and_five(a, b, size);
 	else
 		radix_sort(a, b);
 }

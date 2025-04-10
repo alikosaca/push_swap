@@ -45,7 +45,7 @@ void	sort_three(t_stack **a)
 		sa(a, 1);
 }
 
-void	sort_four(t_stack **a, t_stack **b)
+void	sort_four_and_five(t_stack **a, t_stack **b, int size)
 {
 	int	min_pos;
 
@@ -59,35 +59,15 @@ void	sort_four(t_stack **a, t_stack **b)
 	}
 	else if (min_pos == 3)
 		rra(a, 1);
+	if (size == 5)
+		if (min_pos == 4)
+			rra(a, 1);
 	if (is_sorted(*a))
 		return ;
 	pb(a, b, 1);
-	sort_three(a);
-	pa(a, b, 1);
-}
-
-void	sort_five(t_stack **a, t_stack **b)
-{
-	int	min_pos;
-
-	min_pos = find_min_pos(*a);
-	if (min_pos == 1)
-		sa(a, 1);
-	else if (min_pos == 2)
-	{
-		ra(a, 1);
-		ra(a, 1);
-	}
-	else if (min_pos == 3)
-	{
-		rra(a, 1);
-		rra(a, 1);
-	}
-	else if (min_pos == 4)
-		rra(a, 1);
-	if (is_sorted(*a))
-		return ;
-	pb(a, b, 1);
-	sort_four(a, b);
+	if (size == 5)
+		sort_four_and_five(a, b, 4);
+	else if (size == 4)
+		sort_three(a);
 	pa(a, b, 1);
 }
