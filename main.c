@@ -12,7 +12,7 @@
 
 #include "push_swap.h"
 
-static void	stack_init(t_stack **a, t_stack **b, int ac, char **av, int *size)
+static void	stack_init(t_stack **a, int ac, char **av, int *size)
 {
 	int		*numbers;
 	int		i;
@@ -21,8 +21,6 @@ static void	stack_init(t_stack **a, t_stack **b, int ac, char **av, int *size)
 	if (!numbers)
 		error_exit();
 	i = *size - 1;
-	*a = NULL;
-	*b = NULL;
 	while (i >= 0)
 		push(a, numbers[i--]);
 	free(numbers);
@@ -42,14 +40,15 @@ static void	sort_algorithms(t_stack **a, t_stack **b, int size)
 		radix_sort(a, b);
 }
 
-int main(int ac, char *av[])
+int	main(int ac, char *av[])
 {
-	t_stack *a;
-	t_stack *b;
+	t_stack	*a;
+	t_stack	*b;
 	int		size;
 
-	stack_init(&a, &b, ac, av, &size);
-
+	a = NULL;
+	b = NULL;
+	stack_init(&a, ac, av, &size);
 	if (is_sorted(a))
 	{
 		free_stack(&a);

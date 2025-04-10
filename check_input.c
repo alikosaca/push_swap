@@ -12,10 +12,10 @@
 
 #include "push_swap.h"
 
-int *arr_atoi(char **arr, int size)
+int	*arr_atoi(char **arr, int size)
 {
-	int *number_arr;
-	int i;
+	int	*number_arr;
+	int	i;
 
 	number_arr = malloc(sizeof(int) * size);
 	if (!number_arr)
@@ -58,10 +58,10 @@ int	count_arr(char **arr, int is_free)
 	return (i);
 }
 
-int *get_arr(int ac, char **av, int *size, int is_free)
+int	*get_arr(int ac, char **av, int *size, int is_free)
 {
-	char **arr;
-	int *number_arr;
+	char	**arr;
+	int		*number_arr;
 
 	if (ac == 2 && av[1])
 	{

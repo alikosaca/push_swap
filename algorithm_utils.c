@@ -6,12 +6,11 @@
 /*   By: akosaca <akosaca@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/09 07:43:52 by akosaca           #+#    #+#             */
-/*   Updated: 2025/04/09 08:17:10 by akosaca          ###   ########.fr       */
+/*   Updated: 2025/04/10 11:37:16 by akosaca          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-
 
 int	find_max_pos(t_stack *stack)
 {
@@ -38,4 +37,3 @@ int	find_max_pos(t_stack *stack)
 	}
 	return (max_pos);
 }
-

@@ -10,14 +10,13 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PUSH_SWAP
-# define PUSH_SWAP
+#ifndef PUSH_SWAP_H
+# define PUSH_SWAP_H
 
 # include <unistd.h>
 # include <stdlib.h>
 # include "./libft/libft.h"
 # include "libft/ft_printf/ft_printf.h"
-
 # define INT_MIN -2147483648
 # define INT_MAX 2147483647
 
@@ -27,29 +26,23 @@ typedef struct s_stack
 	struct s_stack	*next;
 }				t_stack;
 
-
-//check_input
 int		*get_arr(int ac, char **av, int *size, int is_free);
 int		count_arr(char **args, int is_free);
-// int		*get_arr_utils(char **arr, int *number_arr, int *size, int is_free);
 
-int	find_min_pos(t_stack *stack);
-
-int	find_max_pos(t_stack *stack);
-
-int ft_stacksize(t_stack *stack);
+int		find_min_pos(t_stack *stack);
+int		find_max_pos(t_stack *stack);
+int		ft_stacksize(t_stack *stack);
 
 void	index_stack(t_stack **a, int size);
 
 //check_input_utils
-int	is_number(char *str);
-int	is_valid_int(char *str);
-int	check_duplicates(int *number_arr, int size);
+int		is_number(char *str);
+int		is_valid_int(char *str);
+int		check_duplicates(int *number_arr, int size);
 
-int	is_sorted(t_stack *stack);
+int		is_sorted(t_stack *stack);
 void	sort_array(int *arr, int size);
 void	index_stack_apply(t_stack **a, int *sorted, int size);
-
 
 //error
 void	free_arr(char **arr);
@@ -86,10 +79,8 @@ void	rra(t_stack **a, int print);
 void	rrb(t_stack **b, int print);
 void	rr(t_stack **a, t_stack **b, int print);
 
-
 //radix_sort
 void	radix_sort(t_stack **stack_a, t_stack **stack_b);
-
-int *arr_atoi(char **arr, int size);
+int		*arr_atoi(char **arr, int size);
 
 #endif

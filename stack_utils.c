@@ -12,12 +12,12 @@
 
 #include "push_swap.h"
 
-int find_min_pos(t_stack *stack)
+int	find_min_pos(t_stack *stack)
 {
-	t_stack *temp;
-	int     min;
-	int     pos;
-	int     min_pos;
+	t_stack	*temp;
+	int		min;
+	int		pos;
+	int		min_pos;
 
 	if (!stack)
 		return (-1);
@@ -51,6 +51,7 @@ int	pop(t_stack **stack)
 	free(temp);
 	return (value);
 }
+
 void	free_stack(t_stack **stack)
 {
 	t_stack	*temp;
